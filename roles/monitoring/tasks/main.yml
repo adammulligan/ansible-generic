@@ -1,0 +1,37 @@
+---
+
+- name: Install iftop
+  apt: name=iftop
+
+- name: install glances dependencies
+  apt: name={{ item }} state=present
+  with_items:
+    - build-essential
+    - python-dev
+    - python-pycurl
+    - python-pip
+- name: Install glances
+  pip: name=glances
+
+- name: Install htop
+  apt: name=htop
+
+- name: Install logwatch
+  apt: name=logwatch
+- name: Copy logwatch config
+  template: src=logwatch.conf.j2 dest=/usr/share/logwatch/default.conf/logwatch.conf
+
+- name: Install PSAD
+  apt: name=psad
+- name: Copy PSAD config
+  template: src=psad.conf.j2 dest=/etc/psad/psad.conf
+- name: Configure PSAD (IPtables)
+  command: iptables -A INPUT -j LOG
+- name: Configure PSAD (IPtables)
+  command: iptables -A FORWARD -j LOG
+- name: Configure PSAD (IP6tables)
+  command: ip6tables -A INPUT -j LOG
+- name: Configure PSAD (IP6tables)
+  command: ip6tables -A FORWARD -j LOG
+- name: Configure PSAD (update signatures)
+  command: psad --sig-update
