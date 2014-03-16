@@ -34,10 +34,10 @@
 [url "git://gist.github.com/"]
   insteadOf = "gist:"
 [user]
-	email = adammulligan@gmail.com
-  name = Adam Mulligan
+	email = {{ github_email }}
+  name = {{ github_name }}
 [github]
-  user = adammulligan
+  user = {{ github_username }}
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	g = grep --break --heading --line-number
