@@ -6,6 +6,11 @@
   # remote_user: user
   # sudo: yes
 
+  pre_tasks:
+    - name: update apt if needed
+      apt: update_cache=yes cache_valid_time=3600
+
   roles:
     - monitoring
     - nginx
+    - vim
