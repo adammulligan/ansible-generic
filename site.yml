@@ -12,6 +12,7 @@
 
   roles:
     - monitoring
+    - security
     - nginx
     - vim
     - tmux
