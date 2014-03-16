@@ -3,13 +3,6 @@
 - name: Install iftop
   apt: name=iftop
 
-- name: install glances dependencies
-  apt: name={{ item }} state=present
-  with_items:
-    - build-essential
-    - python-dev
-    - python-pycurl
-    - python-pip
 - name: Install glances
   pip: name=glances
 
@@ -35,3 +28,12 @@
   command: ip6tables -A FORWARD -j LOG
 - name: Configure PSAD (update signatures)
   command: psad --sig-update
+
+- name: Install Munin
+  apt: name=munin
+- name: Install Munin nginx config
+  template: src=munin.nginx.j2 dest=/etc/nginx/sites-available/munin
+- name: Enable munin nginx config
+  file: src=/etc/nginx/sites-available/munin dest=/etc/nginx/sites-enabled/munin state=link
+  notify:
+    - restart nginx
