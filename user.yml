@@ -5,7 +5,9 @@
   user: root
 
   vars_prompt:
-    user_password: "Enter a password for the new user:"
+    - name: user_password
+      prompt: "Enter a password for the new user:"
+      private: true
 
   roles:
     - sudo_user
