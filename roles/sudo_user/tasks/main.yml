@@ -4,7 +4,7 @@
   user: name={{username}}
         state=present
         groups="sudo"
-        password=password
+        password={{user_password}}
 - name: Create the SSH directory.
   file: state=directory path=/home/{{username}}/.ssh/
 - name: Copy SSH Public Key
