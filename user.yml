@@ -1,0 +1,8 @@
+---
+
+- name: Setup default user and SSH keys
+  hosts: digital_ocean
+  user: root
+
+  roles:
+    - sudo_user
