@@ -5,8 +5,12 @@ Includes a bunch of useful defaults, zsh, vim configs, etc.
 
 ## Usage
 
-Installed Ansible, add the desired hosts to `./hosts` and run:
+Install Ansible locally, add the desired hosts to `./hosts` and run:
 
 ```
+# Creates a non-root user for use as your permanent login
+ansible-playbook -i hosts user.yml
+
+# Installs all required roles
 ansible-playbook -i hosts site.yml
 ```
