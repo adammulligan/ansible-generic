@@ -4,3 +4,21 @@
 
 - name: install ruby
   shell: ~/.rvm/bin/rvm install --default {{ ruby_version }} creates=~/.rvm/rubies/{{ ruby_version }}
+
+- name: Install RVM path in ~/.zshrc
+  lineinfile:
+    dest=~/.zshrc
+    line="PATH=$PATH:$HOME/.rvm/bin"
+    regexp="\.rvm\/bin"
+    state=present
+    insertafter=EOF
+    create=True
+
+- name: Install RVM in ~/.zshrc
+  lineinfile:
+    dest=~/.zshrc
+    line="[[ -s \"$HOME/.rvm/scripts/rvm\" ]] && . \"$HOME/.rvm/scripts/rvm\""
+    regexp="\/.rvm\/scripts"
+    state=present
+    insertafter=EOF
+    create=True
