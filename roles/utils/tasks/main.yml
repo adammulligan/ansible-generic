@@ -2,7 +2,11 @@
 
 - name: Get SCM Breeze
   git: repo="git://github.com/ndbroadbent/scm_breeze.git" dest=~/.scm_breeze
-- name: Install SCM Breeze in bash
-  command: echo "[ -s \"$HOME/.scm_breeze/scm_breeze.sh\" ] && source \"$HOME/.scm_breeze/scm_breeze.sh\"" >> ~/.bashrc
 - name: Install SCM Breeze in ~/.zshrc
-  command: echo "[ -s \"$HOME/.scm_breeze/scm_breeze.sh\" ] && source \"$HOME/.scm_breeze/scm_breeze.sh\"" >> ~/.zshrc removes=~/.zshrc
+  lineinfile:
+    dest=~/.zshrc
+    line="[ -s \"$HOME/.scm_breeze/scm_breeze.sh\" ] && source \"$HOME/.scm_breeze/scm_breeze.sh\""
+    regexp="scm_breeze"
+    state=present
+    insertafter=EOF
+    create=True
