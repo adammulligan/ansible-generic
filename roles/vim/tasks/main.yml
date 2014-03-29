@@ -2,6 +2,7 @@
 
 - name: Install vim
   apt: name=vim
+  sudo: yes
 
 - name: Get vim config
   git: repo="https://github.com/adammulligan/vim-config.git" dest=~/.vim/

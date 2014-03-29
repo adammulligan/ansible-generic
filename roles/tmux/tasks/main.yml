@@ -2,6 +2,7 @@
 
 - name: Install tmux
   apt: name=tmux
+  sudo: yes
 
 - name: Copy tmux config
   template: src=tmux.conf.j2 dest=~/.tmux.conf

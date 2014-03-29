@@ -2,9 +2,11 @@
 
 - name: Install zsh
   apt: name=zsh
+  sudo: yes
 
 - name: Change default shell
-  command: chsh -s /bin/zsh
+  command: chsh -s /usr/bin/zsh {{username}}
+  sudo: yes
 
 - name: Install oh-my-zsh
   git: >

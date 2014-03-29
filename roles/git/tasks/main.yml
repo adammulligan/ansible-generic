@@ -2,6 +2,7 @@
 
 - name: Install git
   apt: name=git
+  sudo: yes
 
 - name: Copy global git config
   template: src=gitconfig.j2 dest=~/.gitconfig

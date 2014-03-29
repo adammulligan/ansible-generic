@@ -2,13 +2,12 @@
 
 - name: Setup general purpose personal box
   hosts: digital_ocean
-  user: root
-  # remote_user: user
-  # sudo: yes
+  user: adam
 
   pre_tasks:
     - name: update apt if needed
       apt: update_cache=yes cache_valid_time=3600
+      sudo: yes
 
   roles:
     - monitoring
